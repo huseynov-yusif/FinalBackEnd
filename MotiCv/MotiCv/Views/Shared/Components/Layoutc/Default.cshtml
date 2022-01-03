@@ -1,0 +1,38 @@
+﻿@model List<My>
+@foreach (var item in Model)
+{
+
+    <ul class="personal-info">
+        <li>
+            <p> <span> Name</span> @item.Name </p>
+        </li>
+        <li>
+            <p> <span> Age</span> @item.Age</p>
+        </li>
+        <li>
+            <p> <span> Location</span>@item.Location</p>
+        </li>
+        <li>
+            <p> <span> Experience</span>@item.Experience </p>
+        </li>
+        <li>
+            <p> <span> Degree</span> @item.Degree </p>
+        </li>
+        <li>
+            <p> <span> Career Level</span> @item.CareerLevel </p>
+        </li>
+        <li>
+            <p> <span> Phone</span> @item.Phone</p>
+        </li>
+        <li>
+            <p> <span> FAX</span> @item.Fax </p>
+        </li>
+        <li>
+            <p> <span> E-mail</span> <a href="#."> @item.Email</a> </p>
+        </li>
+        <li>
+            <p> <span> Website</span><a href="#."> @item.website</a></p>
+        </li>
+    </ul>
+}
+

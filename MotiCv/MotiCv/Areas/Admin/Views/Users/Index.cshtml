@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MotiUser>
+<h2>Index</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                   @item.Name
+                </td>
+                <td>
+                    @item.Email
+                </td>
+                
+
+                <td>
+                
+                    
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> ;
+                
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

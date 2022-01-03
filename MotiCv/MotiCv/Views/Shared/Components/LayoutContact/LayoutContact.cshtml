@@ -1,0 +1,68 @@
+﻿ @model ContactPostForLayout
+<form role="form" id="contact_form" class="contact-form" method="post">
+    <ul class="row">
+        <li class="col-sm-12">
+            <label>
+                <input asp-for="Name" class="form-control" name="name" id="name" placeholder="NAME">
+            </label>
+        </li>
+        <li class="col-sm-12">
+            <label>
+                <input asp-for="Email" class="form-control" name="email" id="email" placeholder="Email">
+            </label>
+        </li>
+        <li class="col-sm-12">
+            <label>
+                <input asp-for="Subject" class="form-control" name="Subject" id="Subject" placeholder="Subject">
+            </label>
+        </li>
+        <li class="col-sm-12">
+            <label>
+                <textarea asp-for="Content" class="form-control" name="content" id="message" rows="5" placeholder="Message"></textarea>
+            </label>
+        </li>
+        <li class="col-sm-12">
+            <button id="btn_submit" type="submit" value="submit">Send Message</button>
+        </li>
+    </ul>
+</form>
+@section addjs{
+    <script>
+        $(document).ready(function () {
+            $('#contact_form').submit(function (e) {
+                e.preventDefault();
+                const valid = $(e.currentTarget).valid();
+
+                if (valid != true) {
+                    return;
+                }
+                const formdata = new FormData(e.currentTarget);
+
+                $.ajax({
+                    url: '/Home/Contact',
+                    type: 'post',
+                    data: formdata,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        if (response.error == false) {
+                            location.reload();
+                            alert(response.massage);
+                        }
+                        else {
+                            alert(respose.massage);
+                        }
+                    },
+                    error: function (response) {
+
+                    }
+                });
+
+            });
+        });
+    </script>
+    <script src="~/libs/jquery-validate/jquery.validate.js"></script>
+    <script src="~/libs/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+}
+

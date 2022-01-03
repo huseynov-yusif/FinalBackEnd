@@ -1,0 +1,72 @@
+﻿@model IEnumerable<MotiCv.Models.Entitys.My>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="th" scope="col">@Html.DisplayNameFor(model => model.Name)</th>
+            <th class="th" scope="col">@Html.DisplayNameFor(model => model.Degree)</th>
+            <th class="th" scope="col">@Html.DisplayNameFor(model => model.Age)</th>
+            <th class="th" scope="col">@Html.DisplayNameFor(model => model.Location)</th>
+            <th class="th" scope="col">@Html.DisplayNameFor(model => model.Experience)</th>
+            <th class="th" scope="col">@Html.DisplayNameFor(model => model.CareerLevel)</th>
+            <th class="th" scope="col"> @Html.DisplayNameFor(model => model.Phone)</th>
+            <th class="th" scope="col">@Html.DisplayNameFor(model => model.Fax)</th>
+            <th class="th" scope="col"> @Html.DisplayNameFor(model => model.Email)</th>
+            <th class="th" scope="col"> @Html.DisplayNameFor(model => model.website)</th>
+            <th class="th" scope="col">@Html.DisplayNameFor(model => model.Work)</th>
+            <th class="th" scope="col">@Html.DisplayNameFor(model => model.CreatedDate)</th>
+            <th class="th" scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+         { 
+        <tr>
+            <td class="td">@Html.DisplayFor(modelItem => item.Name)</td>
+            <td class="td">@Html.DisplayFor(modelItem => item.Degree)</td>
+            <td class="td">@Html.DisplayFor(modelItem => item.Age)</td>
+            <td class="td">@Html.DisplayFor(modelItem => item.Location)</td>
+            <td class="td">@Html.DisplayFor(modelItem => item.Experience)</td>
+            <td class="td">@Html.DisplayFor(modelItem => item.CareerLevel)</td>
+            <td class="td">@Html.DisplayFor(modelItem => item.Phone)</td>
+            <td class="td">@Html.DisplayFor(modelItem => item.Fax)</td>
+            <td class="td">@Html.DisplayFor(modelItem => item.Email)</td>
+            <td class="td">@Html.DisplayFor(modelItem => item.website)</td>
+            <td class="td">@Html.DisplayFor(modelItem => item.Work)</td>
+            <td class="td">@Html.DisplayFor(modelItem => item.CreatedDate)</td>
+            <td class="td">
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>|
+            </td>
+
+        </tr>
+         } 
+        </tbody> 
+</table>
+
+
+
+@section addcss{ 
+<link
+     .table{
+      
+    border: 2px solid black;
+    border-collapse: collapse;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    font-size: .8rem;
+      } 
+      tr { border: 2px solid black;}
+      .th { border: 2px solid black;}
+      .td { border: 2px solid black;}
+
+/>
+}

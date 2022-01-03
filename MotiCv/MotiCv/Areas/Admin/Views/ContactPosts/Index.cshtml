@@ -1,0 +1,88 @@
+﻿@model IEnumerable<MotiCv.Models.Entitys.ContactPost>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+<div class="col-md-3">
+    <div class="email-sidebar white_box">
+        <ul class="text-left mt-2">
+            <li class="active"><a asp-action="index"><i class="ti-user"></i> <span> <span>Hamisi</span>  <span class="round_badge">@Model.Count()</span> </span> </a></li>
+            <li><a asp-action="index" asp-route-typeId="1"><i class="ti-announcement"></i> <span> <span>Cavablanib</span>   </span> </a></li>
+            <li><a asp-action="index" asp-route-typeId="2"><i class="ti-pin2"></i> <span> <span>Cavab gozleyen</span>  </span> </a></li>
+            <li><a asp-action="index" asp-route-typeId="3"><i class="ti-trash"></i> <span> <span>Silinmisler</span>  </span> </a></li>
+
+        </ul>
+    </div>
+</div>
+<!-- table-responsive -->
+<table @*class="table lms_table_active"*@>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th>Case</th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr @(item.AnsweredByUserId == null ? "class=text-bold" : "")
+            @(item.AnsweredByUserId == null ? "ondblclick=openMesage(this)" : "")
+            data-id="@item.Id">
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                <p>@(item.AnsweredByUserId==null ?"Cavab gozleyir":"Cavab verilib")</p>
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+
+
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+      
+@section addjs{
+
+    <script>
+
+        function openMesage(el) {
+                    let id = $(el).data("id");
+                    window.location.href = `@Url.Action("Details")/${id}`;
+        }
+    </script>
+}
+@section addcss{
+    <style>
+        tr.bold > td > p {
+            font-weight: bold !important;
+        }
+    </style>
+}
